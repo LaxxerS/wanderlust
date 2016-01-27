@@ -1,16 +1,25 @@
 var express = require('express'),
   hbs = require('express-hbs'),
+  path = require('path'),
+
   routes = require('./routes'),
   models = require('./models'),
+
+  appRoot = path.resolve(__dirname, '../../'),
+  corePath = path.resolve(appRoot, 'core/'),
+  clientPath = path.resolve(corePath, 'client/'),
 
   server = express();
 
 function init() {
+  // ## Static files
+  server.use('/assets', express.static(clientPath));
+  
   // ## Setup view engine
   server.engine('hbs', hbs.express4());
   server.set('view engine', 'hbs');
   server.set('views', __dirname + '/views');
-  
+
   // ## Routing
   routes.frontend(server);
   routes.api(server);
