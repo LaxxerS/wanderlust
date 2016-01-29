@@ -1,4 +1,5 @@
 var users = require('./users'),
+  budgets = require('./budgets'),
 
   http;
 
@@ -12,5 +13,6 @@ http = function(apiMethod) {
 
 module.exports = {
   users: users,
+  budgets: budgets,
   http: http
 }

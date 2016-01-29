@@ -4,7 +4,9 @@ var dataProvider = require('../models'),
 
 users = {
   browse: function browse() {
-    return dataProvider.User.findAll();
+    return dataProvider.User.findAll().then(function(users) {
+      return {users: users};
+    })
   }
 }
 

@@ -1,6 +1,7 @@
 
 exports.seed = function(knex, Promise) {
   return Promise.join(
+    knex('users').del(),
     knex('users').insert([{
       uuid: '6acf10a0-68b4-4b4f-b64f-c30c5ae270d5',
       name: 'Tracy J. Stein',

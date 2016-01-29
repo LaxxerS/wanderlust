@@ -19,7 +19,7 @@ Lust.Model = Lust.Model.extend({
 }, {
   findAll: function(options, args) {
     options = options || {};
-    return Lust.Collection.forge({}, { model: this }).fetch(options);
+    return Lust.Collection.forge([], { model: this }).fetch(options);
   },
 
   findOne: function(args, options) {
