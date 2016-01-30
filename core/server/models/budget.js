@@ -1,5 +1,5 @@
 var Lust = require('./base'),
-  User = require('./user').User,
+
   Budget,
   Budgets;
 
@@ -13,14 +13,14 @@ Budget = Lust.Model.extend({
   saving: function() {
     Lust.Model.prototype.saving.call(this);
   },
-  // Relations
-  owner: function() {
-  	return this.belongsTo(User, 'user_id');
+    // Relations
+  user: function() {
+  	return this.belongsTo('User', 'user_id');
   }
 }, {
   findAll: function(options) {
     options = options || {};
-    options.withRelated = ['owner'];
+    options.withRelated = ['user'];
     return Lust.Model.findAll.call(this, options);
   }
 })
@@ -30,6 +30,6 @@ Budgets = Lust.Collection.extend({
 });
 
 module.exports = {
-	Budget: Budget,
-	Budgets: Budgets
+  Budget: Lust.model('Budget', Budget),
+	Budgets: Lust.collection('Budgets', Budgets),
 }

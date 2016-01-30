@@ -14,7 +14,9 @@ var express = require('express'),
 function init() {
   // ## Static files
   server.use('/assets', express.static(clientPath));
-  
+
+  models.init();
+
   // ## Setup view engine
   server.engine('hbs', hbs.express4());
   server.set('view engine', 'hbs');

@@ -1,5 +1,22 @@
-module.exports = {
-  Base: require('./base'),
-  User: require('./user').User,
-  Budget: require('./budget').Budget
+var Promise = require('bluebird'),
+  _ = require('lodash'),
+
+  exports,
+  models;
+
+models = [
+  'budget',
+  'user'
+];
+
+function init() {
+  exports.Base = require('./base');
+
+  models.forEach(function(name) {
+    _.extend(exports, require('./' + name));
+  });
+
+  return Promise.resolve();
 }
+
+exports.init = init;

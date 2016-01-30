@@ -10,6 +10,8 @@ Lust = bookshelf(knex({
   }
 }));
 
+Lust.plugin('registry');
+
 Lust.Model = Lust.Model.extend({
     hasTimestamps: true,
 
