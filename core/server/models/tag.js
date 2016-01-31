@@ -1,10 +1,10 @@
 var Lust = require('./base'),
 
-  Budget,
-  Budgets;
+  Tag,
+  Tags;
 
-Budget = Lust.Model.extend({
-  tableName: 'budgets',
+Tag = Lust.Model.extend({
+  tableName: 'tags',
 
   initialize: function() {
     this.on('saving', this.saving);
@@ -18,28 +18,32 @@ Budget = Lust.Model.extend({
   	return this.belongsTo('User', 'user_id');
   },
 
-  expenses: function expenses() {
-    return this.hasMany('Expense', 'budget_id')
+  expenses: function budget() {
+    return this.hasMany('Expense', 'tag_id');
+  },
+
+  colour: function colour() {
+    return this.belongsTo('Colour', 'colour_id');
   }
 }, {
   findAll: function findAll(options) {
     options = options || {};
-    options.withRelated = ['user', 'expenses'];
+    options.withRelated = ['user', 'expenses', 'colour'];
     return Lust.Model.findAll.call(this, options);
   },
 
   findOne: function findOne(args, options) {
     options = options || {};
-    options.withRelated = ['user', 'expenses'];
+    options.withRelated = ['user', 'expenses', 'colour'];
     return Lust.Model.findOne.call(this, args, options);
   }
 });
 
-Budgets = Lust.Collection.extend({
-	model: Budget
+Tags = Lust.Collection.extend({
+	model: Tag
 });
 
 module.exports = {
-  Budget: Lust.model('Budget', Budget),
-	Budgets: Lust.collection('Budgets', Budgets),
+  Tag: Lust.model('Tag', Tag),
+	Tags: Lust.collection('Tags', Tags),
 }

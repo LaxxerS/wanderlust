@@ -1,16 +1,16 @@
 var dataProvider = require('../models'),
   _ = require('lodash'),
 
-  budgets;
+  expenses;
 
-budgets = {
+expenses = {
   browse: function browse() {
-    return dataProvider.Budget.findAll().then(function(budgets) {
+    return dataProvider.Expense.findAll().then(function(expenses) {
       var i = 0,
         omitted = {};
 
-      if (budgets) {
-        omitted = budgets.toJSON();
+      if (expenses) {
+        omitted = expenses.toJSON();
       }
 
       for (i; i < omitted.length; i = i + 1) {
@@ -18,24 +18,24 @@ budgets = {
       }
 
       return {
-        budgets: omitted
+        expenses: omitted
       };
     })
   },
 
   read: function(args) {
-    return dataProvider.Budget.findOne(args).then(function(budget) {
+    return dataProvider.Expense.findOne(args).then(function(expense) {
       var omitted;
 
-      if (budget) {
-        omitted = budget.toJSON();
+      if (expense) {
+        omitted = expense.toJSON();
         omitted.user = _.omit(omitted.user, ['password']);
         return {
-          budget: budget
+          expense: expense
         };
       }
     });
   }
 }
 
-module.exports = budgets;
+module.exports = expenses;

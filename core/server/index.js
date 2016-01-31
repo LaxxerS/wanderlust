@@ -1,6 +1,7 @@
 var express = require('express'),
   hbs = require('express-hbs'),
   path = require('path'),
+  bodyParser = require('body-parser');
 
   routes = require('./routes'),
   models = require('./models'),
@@ -12,6 +13,9 @@ var express = require('express'),
   server = express();
 
 function init() {
+  server.use(bodyParser.json());
+  server.use(bodyParser.urlencoded({ extended: true }));
+
   // ## Static files
   server.use('/assets', express.static(clientPath));
 

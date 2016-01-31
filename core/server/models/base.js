@@ -1,4 +1,5 @@
 var bookshelf = require('bookshelf'),
+  uuid = require('node-uuid'),
   knex = require('knex'),
 
   Lust;

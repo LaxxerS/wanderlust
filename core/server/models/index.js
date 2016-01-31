@@ -6,7 +6,10 @@ var Promise = require('bluebird'),
 
 models = [
   'budget',
-  'user'
+  'colour',
+  'expense',
+  'user',
+  'tag'
 ];
 
 function init() {
