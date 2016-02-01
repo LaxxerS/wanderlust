@@ -17,6 +17,8 @@ http = function(apiMethod) {
 
     return apiMethod.call(apiContext, options).then(function(result) {
       res.json(result || {});
+    }).catch(function(error) {
+      res.status(error.status).send({ status: error.status, message: error.message, type: error.type });
     });
   }
 }

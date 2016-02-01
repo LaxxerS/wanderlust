@@ -1,5 +1,6 @@
 var dataProvider = require('../models'),
   _ = require('lodash'),
+  Promise = require('bluebird'),
 
   users;
 
@@ -38,14 +39,19 @@ users = {
   },
 
   check: function check(object) {
+    var self = users;
     return dataProvider.User.check(object).then(function(user) {
-      return {
-        user: user
-      };
+      if(user) {
+        return self.read({ id: user.id }).then(function(me) {
+          return me;
+        })
+      }
     }, function(error) {
-      return {
-        'error': error.message
-      };
+      return Promise.reject({
+        status: 400,
+        type: 'client',
+        message: error.message
+      });
     });
   }
 }

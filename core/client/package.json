@@ -30,6 +30,10 @@
     "webpack": "^1.12.2"
   },
   "dependencies": {
-    "vue": "^1.0.15"
+    "jquery": "^2.2.0",
+    "local-storage": "^1.4.2",
+    "lodash": "^4.1.0",
+    "vue": "^1.0.15",
+    "vue-resource": "^0.7.0"
   }
 }

@@ -1,60 +1,83 @@
 <template>
-  <header class="row">
-    <div class="head two">
-
-    </div>
-    <nav class="head one">
-      <ul>
-        <li><a href="#">Budget</a></li>
-        <li><a href="#">Expenses</a></li>
-        <li><a href="#">Category</a></li>
-      </ul>
-    </nav>
-  </header>
-  <div class="row">
-    <div class="card one">
-
-    </div>
-    <div class="card two">
-      Budget
-    </div>
+  <div id="app" v-show="authenticated">
+    <site-header></site-header>
+    <main-wrapper></main-wrapper>
   </div>
 
-  <div class="row">
-    <div class="card two">
-      1
-    </div>
-    <div class="card one">
-      2
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="card three">
-      1
-    </div>
+  <div class="column login-form" v-else>
+    <login-form></login-form>
   </div>
 </template>
 
 <script>
+  import siteHeader from './components/site-header/index.vue';
+  import mainWrapper from './components/main-wrapper/index.vue';
+  import loginForm from './components/auth/login-form.vue';
+  import sharedStore from './stores/shared';
 
+  export default {
+    replace: false,
+
+    components: { siteHeader, mainWrapper, loginForm },
+
+    data () {
+        return {
+          authenticated: false
+        }
+    },
+
+    ready () {
+      sharedStore.init(() => {
+
+      })
+    },
+
+    methods: {
+      init() {
+        alert('init');
+      }
+    },
+
+    events: {
+      'user:loggedin': function () {
+        this.authenticated = true;
+        this.init();
+      }
+    }
+  }
 </script>
 
 <style>
+
 body, html {
+  margin: 0;
   height: 100%;
 }
+
 * {
-  margin: 0;
-  padding: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-body {
+
+#app {
   margin: 0;
   padding: 6% 15%;
-  background-color: #f3f4f4;
+  background-color: #fafafa;
+}
+
+.column {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .row {
@@ -77,10 +100,12 @@ body {
 }
 
 .card {
-  border: solid 1px #e7e7e7;
   margin: 0.5% 1%;
   min-height: 280px;
   background-color: #ffffff;
+  border:1px solid rgba(0,0,0,0.04);
+  box-shadow:0 1px 4px rgba(0,0,0,0.03);
+  border-radius:3px
 }
 
 .head.one,
