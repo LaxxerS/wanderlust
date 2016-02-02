@@ -1,5 +1,7 @@
 var dataProvider = require('../models'),
   _ = require('lodash'),
+  jwt = require('jsonwebtoken'),
+  config = require('../config'),
   Promise = require('bluebird'),
 
   users;
@@ -42,9 +44,15 @@ users = {
     var self = users;
     return dataProvider.User.check(object).then(function(user) {
       if(user) {
-        return self.read({ id: user.id }).then(function(me) {
-          return me;
-        })
+        var token = jwt.sign({ id: user.id }, config.token.secret),
+          data;
+
+        data = {
+          'id': user.id,
+          'token': token
+        }
+        
+        return data;
       }
     }, function(error) {
       return Promise.reject({

@@ -13,7 +13,10 @@
   import siteHeader from './components/site-header/index.vue';
   import mainWrapper from './components/main-wrapper/index.vue';
   import loginForm from './components/auth/login-form.vue';
+
   import sharedStore from './stores/shared';
+
+  import ls from './services/ls';
 
   export default {
     replace: false,
@@ -27,14 +30,18 @@
     },
 
     ready () {
-      sharedStore.init(() => {
-
-      })
+      var token = ls.get('token');
+      if (token) {
+        this.authenticated = true;
+        this.init();
+      }
     },
 
     methods: {
       init() {
-        alert('init');
+        sharedStore.init(() => {
+
+        }, () => this.authenticated = false)
       }
     },
 

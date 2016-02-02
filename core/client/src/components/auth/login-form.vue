@@ -34,10 +34,9 @@
         userStore.login(this.username, this.password, () => {
 
           this.failed = false;
-
           this.password = '';
-
           this.$dispatch('user:loggedin');
+
         }, () => {
           this.failed = true;
         });

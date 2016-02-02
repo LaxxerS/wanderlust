@@ -2,6 +2,7 @@ import _ from 'lodash';
 import http from '../services/http';
 
 import stub from '../stubs/user';
+import budgetStore from './budget';
 
 export default {
   stub,
@@ -11,14 +12,11 @@ export default {
     current: stub
   },
 
-  current(user = null) {
-    if(user) {
-      this.state.current = user;
-    }
-
-    return this.state.current;
+  init(users, current) {
+      this.state.users = users;
+      this.state.current = current;
   },
-  
+
   login(username, password, successCb = null, errorCb = null) {
     http.post('authentications', { username, password }, successCb, errorCb);
   },

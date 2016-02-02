@@ -12,21 +12,15 @@ Colour = Lust.Model.extend({
 
   saving: function() {
     Lust.Model.prototype.saving.call(this);
-  },
-    // Relations
-  tag: function tag() {
-  	return this.hasMany('Tag', 'colour_id');
   }
 }, {
   findAll: function findAll(options) {
     options = options || {};
-    options.withRelated = ['tag'];
     return Lust.Model.findAll.call(this, options);
   },
 
   findOne: function findOne(args, options) {
     options = options || {};
-    options.withRelated = ['tag'];
     return Lust.Model.findOne.call(this, args, options);
   }
 });

@@ -5,6 +5,7 @@ var _ = require('lodash'),
   expenses = require('./expenses'),
   tags = require('./tags'),
   colours = require('./colours'),
+  data = require('./data'),
 
   http;
 
@@ -29,5 +30,6 @@ module.exports = {
   expenses: expenses,
   tags: tags,
   colours: colours,
+  data: data,
   http: http
 }
