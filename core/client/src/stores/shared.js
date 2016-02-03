@@ -20,7 +20,6 @@ export default {
   init(successCb = null, errorCb = null) {
     var id = ls.get('id');
     http.get(`data/${id}`, data => {
-      // Fix pick
       assign(this.state, data);
       userStore.init(this.state.users, this.state.current);
       budgetStore.init(_.pick(this.state.current, ['budgets']));

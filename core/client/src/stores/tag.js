@@ -10,6 +10,6 @@ export default {
   },
 
   init(tags) {
-    this.state.tags = tags;
+    this.state = tags;
   }
 }

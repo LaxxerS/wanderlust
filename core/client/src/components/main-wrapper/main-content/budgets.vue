@@ -1,15 +1,16 @@
 <template>
-  <div class="head two">
-  
+  <div class="card two">
+
   </div>
 </template>
 
 <script>
-  import userStore from '../../stores/user';
+  import budgetStore from '../../../stores/budget';
+
   export default {
     data() {
       return {
-        state: userStore.state
+        state: budgetStore.state
       }
     }
   }

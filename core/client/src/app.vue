@@ -1,5 +1,6 @@
 <template>
   <div id="app" v-show="authenticated">
+    <side-bar></side-bar>
     <site-header></site-header>
     <main-wrapper></main-wrapper>
   </div>
@@ -11,7 +12,8 @@
 
 <script>
   import siteHeader from './components/site-header/index.vue';
-  import mainWrapper from './components/main-wrapper/index.vue';
+  import mainWrapper from './components/main-wrapper/main-content/index.vue';
+  import sideBar from './components/main-wrapper/sidebar/index.vue';
   import loginForm from './components/auth/login-form.vue';
 
   import sharedStore from './stores/shared';
@@ -21,7 +23,7 @@
   export default {
     replace: false,
 
-    components: { siteHeader, mainWrapper, loginForm },
+    components: { siteHeader, sideBar, mainWrapper, loginForm },
 
     data () {
         return {
