@@ -1,8 +1,9 @@
 <template>
   <div id="app" v-show="authenticated">
-    <side-bar></side-bar>
-    <site-header></site-header>
-    <main-wrapper></main-wrapper>
+    <div class="wrapper">
+      <main-content></main-content>
+      <side-bar></side-bar>
+    </div>
   </div>
 
   <div class="column login-form" v-else>
@@ -11,8 +12,7 @@
 </template>
 
 <script>
-  import siteHeader from './components/site-header/index.vue';
-  import mainWrapper from './components/main-wrapper/main-content/index.vue';
+  import mainContent from './components/main-wrapper/main-content/index.vue';
   import sideBar from './components/main-wrapper/sidebar/index.vue';
   import loginForm from './components/auth/login-form.vue';
 
@@ -23,7 +23,7 @@
   export default {
     replace: false,
 
-    components: { siteHeader, sideBar, mainWrapper, loginForm },
+    components: { mainContent, sideBar, loginForm },
 
     data () {
         return {
@@ -57,7 +57,38 @@
 </script>
 
 <style>
+/*
+background-color: #ffffff;
+border:1px solid rgba(0,0,0,0.04);
+box-shadow:0 1px 4px rgba(0,0,0,0.03);
+border-radius:3px
 
+row
+display: -webkit-box;
+display: -moz-box;
+display: -ms-flexbox;
+display: -webkit-flex;
+display: flex;
+-webkit-flex-flow: row wrap;
+-moz-flex-flow: row wrap;
+-ms-flex-flow: row wrap;
+-ms-flex-direction: row;
+-ms-flex-wrap: wrap;
+flex-flow: row wrap;
+
+column
+display: -webkit-box;
+display: -moz-box;
+display: -ms-flexbox;
+display: -webkit-flex;
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+height: 100%;
+padding: 0;
+margin: 0;
+*/
 body, html {
   margin: 0;
   height: 100%;
@@ -75,21 +106,7 @@ body, html {
   background-color: #fafafa;
 }
 
-.column {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-.row {
+.wrapper {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -101,55 +118,38 @@ body, html {
   -ms-flex-direction: row;
   -ms-flex-wrap: wrap;
   flex-flow: row wrap;
-  margin: 1% auto;
 }
 
-.head {
-  margin: 0.5% 1%;
+.feeds {
+  flex: 2;
+  padding: 20px;
 }
 
-.card {
-  margin: 0.5% 1%;
-  min-height: 280px;
+.sides {
+  flex: 1;
+  padding: 20px;
+}
+
+.container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.item {
+  width: 100%;
+  min-height: 250px;
   background-color: #ffffff;
   border:1px solid rgba(0,0,0,0.04);
   box-shadow:0 1px 4px rgba(0,0,0,0.03);
-  border-radius:3px
+  border-radius:3px;
+  margin-bottom: 10px;
 }
 
-.head.one,
-.card.one {
-  flex: 1;
-}
 
-.head.two,
-.card.two {
-  flex: 2;
-}
-
-.head.three,
-.card.three {
-  flex: 3;
-}
-
-nav > ul {
-  list-style: none;
-  text-align: right;
-  margin: 0;
-}
-
-nav > ul li {
-  display: inline-block;
-  margin-left: 5%;
-}
-
-nav > ul li a {
-  text-decoration: none;
-  color: #000;
-}
-
-.day {
-  background-image: url(https://unsplash.it/280?image=922);
-  background-size: cover;
-}
 </style>

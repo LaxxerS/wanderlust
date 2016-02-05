@@ -1,20 +1,21 @@
 <template>
-  <div class="row">
-    <budgets></budgets>
-    <tags></tags>
-  </div>
-
-  <div class="row">
-    <expenses></expenses>
+  <div class="feeds">
+    <div class="container" v-for="item in items">
+      <feed-item></feed-item>
+    </div>
   </div>
 </template>
 
 <script>
-  import budgets from './budgets.vue';
-  import tags from './tags.vue';
-  import expenses from './expenses.vue';
+  import feedItem from './item.vue';
 
   export default {
-    components: { budgets, tags, expenses },
+    components: { feedItem },
+
+    data() {
+      return {
+        items: [{ one: 'one' }, { two: 'two'}]
+      }
+    }
   }
 </script>

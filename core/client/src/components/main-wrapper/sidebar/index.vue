@@ -1,6 +1,6 @@
 <template>
-  <aside class="sidebar">
-
+  <aside class="sides">
+asdasdas
   </aside>
 </template>
 
@@ -9,14 +9,3 @@
 
   }
 </script>
-
-<style>
-  .sidebar {
-    width: 220px;
-    background-color: black;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-</style>

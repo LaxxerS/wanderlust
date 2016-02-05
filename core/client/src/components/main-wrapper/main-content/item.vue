@@ -1,8 +1,8 @@
 <template>
-  <div class="card two">
+  <div class="item">
 
   </div>
-</template>
+</templte>
 
 <script>
   export default {
