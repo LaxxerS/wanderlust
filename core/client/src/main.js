@@ -1,11 +1,17 @@
 import Vue from 'vue'
-import resource from 'vue-resource'
+import VueResource from 'vue-resource'
+import VueRouter from 'vue-router';
+import registerRouters from './routers';
 import App from './app.vue'
 
 import ls from './services/ls';
 
 window.Vue = Vue;
-Vue.use(resource);
+Vue.config.debug = true;
+
+Vue.use(VueResource);
+Vue.use(VueRouter);
+
 Vue.http.options.root = 'http://localhost:3000/api/v1.0';
 Vue.http.interceptors.push({
   request(r) {
@@ -28,4 +34,7 @@ Vue.http.interceptors.push({
   }
 });
 
-new Vue(App).$mount('body');
+var router = new VueRouter();
+registerRouters(router);
+
+router.start(App, 'app');

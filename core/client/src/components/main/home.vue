@@ -1,11 +1,10 @@
 <template>
-  <div class="item">
-
-  </div>
-</templte>
+</template>
 
 <script>
   export default {
-
   }
 </script>
+
+<style>
+</style>
