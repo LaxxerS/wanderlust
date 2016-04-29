@@ -228,6 +228,16 @@ input:focus {
   width: 220px;
   z-index: 4;
 }
+.sidebar-name {
+  margin: 20px 0px;
+}
+.sidebar-name p {
+  margin: 0;
+  line-height: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
 .sidebar .logo {
   padding: 10px 15px;
 }
@@ -250,7 +260,7 @@ input:focus {
   line-height: 30px;
 }
 .sidebar .nav {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .sidebar .nav li > a {
   color: #888888;
@@ -352,7 +362,7 @@ body > .navbar-collapse:after {
   min-height: 100%;
 }
 .main-panel > .content {
-  padding: 30px 15px;
+  padding: 30px 80px;
   min-height: calc(100% - 123px);
 }
 .main-panel > .footer {
@@ -385,6 +395,9 @@ body > .navbar-collapse:after {
   padding: 8px 16px;
   border-color: #888888;
   color: #888888;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .btn:hover, .btn:focus, .btn:active, .btn.active, .open > .btn.dropdown-toggle {
   background-color: transparent;
@@ -720,7 +733,8 @@ body > .navbar-collapse:after {
 
 .form-control {
   background-color: #FFFFFF;
-  border: 1px solid #E3E3E3;
+  border: none !important;
+  border-bottom: 1px solid #E3E3E3 !important;
   border-radius: 4px;
   color: #565656;
   padding: 8px 12px;
@@ -730,7 +744,8 @@ body > .navbar-collapse:after {
 }
 .form-control:focus {
   background-color: #FFFFFF;
-  border: 1px solid #AAAAAA;
+  border: none !important;
+  border-bottom: 1px solid #FE763A !important;
   -webkit-box-shadow: none;
   box-shadow: none;
   outline: 0 !important;

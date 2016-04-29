@@ -1,5 +1,6 @@
 import Home from './components/main/home.vue';
 import loginForm from './components/auth/login.vue';
+import Budgets from './components/main/budgets.vue';
 
 export default function(router) {
 
@@ -12,6 +13,11 @@ export default function(router) {
     '/login': {
       name: 'login',
       component: loginForm
+    },
+
+    '/budgets': {
+      name: 'budgets',
+      component: Budgets
     }
   })
 }
